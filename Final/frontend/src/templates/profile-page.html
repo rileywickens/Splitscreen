@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+    <script src="./js/profile.js" type="module"></script>
+    <script src="./js/searchAuth.js" type="module"></script>
+    <script src="./js/registerSW.js" defer></script>
+
+    <link rel="icon" href="/images/splitscreen-logo.png">
+    <meta name="theme-color" content="#111111">
+    <link rel="apple-touch-icon" href="/images/icon-192x192.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+
+    <title>Profile Page</title>
+</head>
+<body>
+    <nav class="navbar sticky-top bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/auth">
+                <img src="./images/splitscreen-logo.png" alt="splitscreen-logo" width="30"/>
+                SplitScreen
+            </a>
+            <form id="search-bar" class="d-flex w-50" role="search">
+                <input id="search-input" class="form-control me-2" type="search" placeholder="#game or @user" aria-label="Search"/>
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <button 
+                class="btn btn-sm btn-outline-secondary" 
+                type="button"
+                data-bs-toggle="modal" 
+                data-bs-target="#settingsModal"
+            >
+                Settings
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-12 col-md-8">
+                <h6 id="username" class="mt-1">Username</h6>
+                <div class="card p-3 user-information">
+                    <div class="row g-3">
+
+                        <!-- Username | Send Friend Request -->
+                        <div class="col-6" id="username-header">
+                            <h4 id="name">Username</h4>
+                        <!-- Game Stats & Ratings -->
+                            <div class="col-6 d-flex flex-column gap-2 w-100">
+                                <div id="game-stats" class="card p-2">
+                                    <h6 class="mb-4">Game Stats</h6>
+                                    <div class="mb-2">Playing:</div>
+                                    <div class="mb-2">Finished:</div>
+                                    <div class="mb-2">Dropped:</div>
+                                    <div class="mb-2">Reviewed:</div>
+                                </div>
+                                <div id="ratings" class="card p-2">
+                                    <h6 class="mb-4">Ratings</h6>
+                                    <div class="mb-2">1 ★</div>
+                                    <div class="mb-2">2 ★</div>
+                                    <div class="mb-2">3 ★</div>
+                                    <div class="mb-2">4 ★</div>
+                                    <div class="mb-2">5 ★</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 d-flex flex-column">
+                            <div class="friends-list-title">Friends:</div>
+                            <div class="friends-list"></div>
+                            <div class="friend-requests-list-title">Friend Requests:</div>
+                            <div class="friend-requests-list d-flex flex-row">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column favorite-games">
+                        <h6 class="mt-2">Favorite Games</h6>
+                        <div id="fav-carousel-inner" class="carousel-inner d-flex flex-wrap justify-content-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- User Activity -->
+            <div class="col-12 col-md-4">
+                <h6 class="mt-1">Recent Activity</h6>
+                <div class="friend-activity d-flex flex-column gap-2 p-2">
+
+
+                    <div class="card p-3">
+                        <div class="d-flex gap-2">
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold review-username">Username</span>
+                                    <span>★★★★</span>
+                                </div>
+                                <textarea class="form-control" rows="4" readonly>This game was amazing, loved every second of it!</textarea>
+                            </div>
+                            <img src="./images/Doom.jpg" class="rounded" alt="Game Cover" style="width: 60px; height: 80px; object-fit: cover;">
+                        </div>
+                    </div>
+
+                    <div class="card p-3">
+                        <div class="d-flex gap-2">
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold review-username">Username</span>
+                                </div>
+                                <p class="mb-0 mt-2 text-muted">Started playing a new game!</p>
+                            </div>
+                            <img src="./images/Doom.jpg" class="rounded" alt="Game Cover" style="width: 60px; height: 80px; object-fit: cover;">
+                        </div>
+                    </div>
+
+                    <div class="card p-3">
+                        <div class="d-flex gap-2">
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold review-username">Username</span>
+                                    <span>★★★★★</span>
+                                </div>
+                                <textarea class="form-control" rows="5" readonly>Absolute masterpiece, one of the best games I have ever played.</textarea>
+                            </div>
+                            <img src="./images/Doom.jpg" class="rounded" alt="Game Cover" style="width: 60px; height: 80px; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="d-flex justify-content-center align-items-center py-3 my-4 border-top"> 
+        <div class="footer-text">All Rights Reserved © 2026</div>
+    </footer>
+
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content bg-dark text-white border border-secondary rounded-4">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="settingsModalLabel">Settings</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="settings-errorbox" class="hidden"></div>
+                <div class="modal-body">
+                    <form class="settings-form">
+                        <div class="mb-3">
+                            <label for="usernameInput" class="form-label">New Username</label>
+                            <input type="text" class="form-control" id="usernameInput">
+                        </div>
+
+                        <div class="d-grid gap-3 mt-4">
+                            <button type="submit" class="btn btn-light btn-lg">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <template id="UserActivityTemplate">
+        <!-- TODO COMPLETE FRIEND ACITIVITY TEMPLATE-->
+    </template>
+
+
+    <template id="videogameLesserFeatureTemplate">
+        <div class="carousel-item mb-2">
+                <div class="card h-100 border-0">
+                    <div class="game-img-wrapper">          
+                        <img class="card-img-top" src="" alt=""/>
+                        <button class="btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <a id="card-link">
+                        <div class="card-body filled-card">
+                            <h5 class="card-title"></h5>
+                        </div>
+                    </a>
+                </div>
+        </div>
+    </template>
+
+    <template id="UnselectedSlotTemplate">
+        <div class="carousel-item mb-2">
+            <div class="card h-100 border-0">
+                    <div class="card-body">
+                        <h5 class="card-title">Empty Favorite Slot.</h5>
+                        <p class="card-text">Go out and find some more favorites!</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </template>
+
+    <template id="friendTemplate">
+        <div class="friend">
+            <a class="friend-link">
+                <div class="friend-name">HELLO</div>
+            </a>
+            <div class="friend-buttons">
+                <button class="friend-remove btn btn-danger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <template id="friendRequestTemplate">
+        <div class="friend-request d-flex flex-row">
+            <a class="friend-request-link">
+                <div class="friend-request-name">HELLO</div>
+            </a>
+            <div class="friend-request-buttons">
+                <button class="friend-request-accept btn btn-success">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                    </svg>
+                </button>
+                <button class="friend-request-reject btn btn-danger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg>  
+                </button>
+            </div>
+        </div>
+    </template>
+
+</body>
+</html>

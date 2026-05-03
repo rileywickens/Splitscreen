@@ -1,0 +1,43 @@
+name: csc342project
+
+services:
+  proxy:
+    image: nginx:latest
+    restart: unless-stopped
+    volumes:
+      - ./proxy/default.conf.template:/etc/nginx/templates/default.conf.template
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+      - database
+      - frontend
+
+  api:
+    build: ./api
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./api/src:/app/src
+    environment:
+      - PORT=80
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    volumes:
+      - ./frontend/src:/app/src
+    environment:
+      - PORT=80
+
+  database:
+    image: mariadb:latest
+    restart: unless-stopped
+    ports: 
+      - "3307:3306"
+    volumes:
+      - ./database/data:/var/lib/mysql
+      - ./database/db_schema:/docker-entrypoint-initdb.d
+    env_file:
+      - .env
