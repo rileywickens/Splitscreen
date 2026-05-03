@@ -1,5 +1,3 @@
-# Final Team Project
-
 ## Splitscreen
 
 ## Progress Report
@@ -28,7 +26,6 @@ User's are able to access some features like seeing games and statistics but are
 
 ## PWA Capabilities
 This project supports Progressive Web App behavior by having service workers, a web app manifest, and offline handling. The service worker caches important frontend files like the HTML, JavaScript files, CSS files, images, and the manifest so they can all be loaded with no network connection. The project also uses different caching strategies. Static assets are served from the cache if possible, while some of the API call requests use the network first to try and get fresh data, but still fall back to the cache if not possible. The web app manifest makes the site installable and gives it things like name, theme color, start URL, display mode, and icons.
-<!-- Describe features available to your users offline, caching strategy, installability, theming, etc. -->
 
 
 ## API Documentation
@@ -70,31 +67,6 @@ Method | Route                                           | Description
 ## Database ER Diagram
 
 ![Database Diagram](database/images/Final_Database.png)
-
-
-
-## Team Member Contributions
-
-#### Razvan Braha
-
-* Service Workers
-* Web Manifest
-* Offline Handling
-
-#### Morgan Sawyer
-
-* User Pages Functionality
-* Game Pages Functionality
-* Recent Activity Functionality
-
-#### Riley Wickens
-
-* Reworked Authentication
-* Search Functionality
-* Game Functionality
-* Friends Functionality
-* Finalised Styling
-* Favorite Game Functionality
 
 #### Milestone Effort Contribution
 
