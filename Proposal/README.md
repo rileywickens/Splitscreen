@@ -84,28 +84,3 @@ Figma Link: https://www.figma.com/design/2jU7hkhojJmDua7A6JK25W/Splitscreen-Web-
 ## Sources of Data Needed
 
 To support discovery, game pages, filtering, and reviews, the application will need video game metadata, including game identity (title, cover art, summaries), release information, categorization, ratings, age guidance, and developer information. We will use the IGDB videogame database API as our single source for game data. The backend will make a call to IGDB every time a user searches for a game, opens a game page, browses lists, and filters content. IGDB requests will be made from  the backend to protect API credentials, validate data before sending it to the client, and to allow caching. IGDB provides coverage across platforms, making this the perfect option for an app that wants community interaction from all platforms.
-
-## Team Member Contributions
-
-#### Razvan Braha
-
-* Feature Description
-* Sources of Data
-* Reviewed Wireframes
-
-#### Morgan Sawyer
-
-* Problem Statement
-* PWA Capabilities
-* Reviewed Wireframes
-
-#### Riley Wickens
-
-* Website Wireframes
-* Mobile Wireframes
-  
-#### Milestone Effort Contribution
-
-Razvan Braha  | Morgan Sawyer | Riley Wickens
-------------- | ------------- | --------------
-33.33%        | 33.33%        | 33.33%
